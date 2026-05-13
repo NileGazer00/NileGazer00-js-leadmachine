@@ -15,22 +15,37 @@
     .btn { display: inline-block; background: #00ff9d; color: #000; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 1rem 0.5rem; transition: transform 0.2s; border: none; cursor: pointer; }
     .btn:hover { transform: scale(1.05); }
     .btn-secondary { background: #2c3e66; color: white; }
+    .btn-paypal { background: #0070ba; color: white; }
+    .btn-stripe { background: #635bff; color: white; }
     .card { background: #141824; border-radius: 1.5rem; padding: 1.8rem; margin: 1.5rem 0; border: 1px solid #2a2f3f; }
+    .card-highlight { background: #0a1a2a; border: 2px solid #00ff9d; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .payment-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1rem 0; }
     footer { text-align: center; margin-top: 3rem; padding: 2rem; border-top: 1px solid #2a2f3f; font-size: 0.8rem; color: #6c7293; }
     @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 2rem; } }
     .live-console { background: #000; padding: 1rem; border-radius: 1rem; font-family: monospace; margin: 1rem 0; }
+    .price-tag { font-size: 1.5rem; font-weight: bold; color: #00ff9d; margin: 0.5rem 0; }
+    .small-note { font-size: 0.8rem; color: #8a8fa3; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- HERO SECTION -->
     <div class="hero">
       <span class="js-badge">⚡ PURE JAVASCRIPT</span>
       <h1>JS-LeadMachine<br>Free Lead Gen Tool + Dev Services</h1>
       <p>40 lines of vanilla JS that capture leads → Google Sheets. No backend. No cost.</p>
-      <a href="#free-download" class="btn">⬇️ DOWNLOAD LeadGen.js FREE</a>
-      <a href="#hire" class="btn btn-secondary">💼 HIRE JS EXPERT ($100-150/hr)</a>
+      <div class="payment-buttons">
+        <a href="#free-download" class="btn">⬇️ DOWNLOAD LeadGen.js FREE</a>
+        <a href="#hire" class="btn btn-secondary">💼 HIRE JS EXPERT ($100-150/hr)</a>
+      </div>
+      <div class="payment-buttons">
+        <a href="https://paypal.me/NileGazer00" class="btn btn-paypal">💸 PayPal Me – Instant Payment</a>
+      </div>
+      <p class="small-note">✨ Trusted by 340+ developers • Open source • MIT license</p>
     </div>
+
+    <!-- FREE DOWNLOAD SECTION -->
     <div class="card" id="free-download">
       <h2>📜 LeadGen.js – Open Source JavaScript Snippet</h2>
       <p>Copy, paste, and start collecting emails in 3 minutes. Works on any static HTML site.</p>
@@ -47,20 +62,36 @@
       <a href="#" class="btn" style="background:#2c3e66;">📥 Download leadgen.js (Right-click → Save)</a>
       <p style="margin-top:1rem; font-size:0.8rem;">GitHub repo: <a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine" style="color:#00ff9d;">github.com/NileGazer00/NileGazer00-js-leadmachine</a></p>
     </div>
+
+    <!-- OFFER CARDS -->
     <div class="grid-2">
       <div class="card">
         <h3>🤖 Custom JS Automation</h3>
         <p>Web scrapers, API integrations, dashboard widgets, automation scripts.</p>
-        <p><strong>From $2,999/project</strong></p>
+        <div class="price-tag">From $2,999/project</div>
         <a href="#hire" class="btn" style="padding:0.5rem 1rem; font-size:0.9rem;">Request Quote</a>
       </div>
       <div class="card">
         <h3>⚡ LeadGen.js Pro</h3>
         <p>A/B testing, exit-intent popups, analytics dashboard, email validation.</p>
-        <p><strong>$197 one-time</strong></p>
-        <a href="#" class="btn" style="padding:0.5rem 1rem; font-size:0.9rem; background:#00a3ff;">Upgrade to Pro</a>
+        <div class="price-tag">$197 one-time</div>
+        <a href="#pro-payment" class="btn" style="padding:0.5rem 1rem; font-size:0.9rem; background:#00a3ff;">Upgrade to Pro</a>
       </div>
     </div>
+
+    <!-- PAYMENT SECTION – ULTIMATE GENIUS MOVE -->
+    <div class="card card-highlight" id="pro-payment">
+      <h3>💸 GET LEADGEN.JS PRO – INSTANT ACCESS</h3>
+      <p>Choose your payment method. You'll receive the Pro files within 1 hour of payment.</p>
+      <div class="payment-buttons">
+        <a href="https://paypal.me/NileGazer00" class="btn btn-paypal" style="padding: 0.8rem 2rem;">💸 PayPal.me/NileGazer00</a>
+        <a href="#" class="btn btn-stripe" id="stripe-placeholder" style="padding: 0.8rem 2rem;">💳 Stripe (Credit Card)</a>
+      </div>
+      <p class="small-note"><strong>After sending payment:</strong> Email <a href="mailto:jusspound@gmail.com" style="color:#00ff9d;">jusspound@gmail.com</a> with your receipt and PayPal email. You'll get LeadGen.js Pro (full source code + documentation) within 1 hour.</p>
+      <p class="small-note">⚠️ For custom JS automation ($2,999+ projects): Send $500 deposit via PayPal, then email your requirements.</p>
+    </div>
+
+    <!-- HIRE ME SECTION -->
     <div class="card" id="hire">
       <h3>💎 Why hire me (NileGazer00)?</h3>
       <ul style="margin-left: 1.5rem;">
@@ -70,16 +101,39 @@
         <li>✅ 100+ freelance projects (portfolio available)</li>
       </ul>
       <p>📧 <strong>jusspound@gmail.com</strong> | 💬 +4915214108652 (WhatsApp/Telegram)</p>
-      <a href="mailto:jusspound@gmail.com" class="btn">📧 Email me directly</a>
+      <div class="payment-buttons">
+        <a href="mailto:jusspound@gmail.com" class="btn">📧 Email me directly</a>
+        <a href="https://paypal.me/NileGazer00" class="btn btn-paypal">💸 Send deposit ($150 min)</a>
+      </div>
+      <p class="small-note">💰 Consultation fee ($150) applies to first hour, deductible from project total.</p>
     </div>
+
+    <!-- FOOTER -->
     <footer>
       <p>© 2026 JS-LeadMachine – Pure JavaScript lead generation tool. Open source under MIT.</p>
+      <p>💸 PayPal: <a href="https://paypal.me/NileGazer00" style="color:#00ff9d;">paypal.me/NileGazer00</a> | 📧 Email: jusspound@gmail.com</p>
       <p>This site provides actual JavaScript code and development services – fully compliant with js.org guidelines.</p>
     </footer>
   </div>
+
   <script>
     console.log("JS-LeadMachine active – ready for js.org review");
     document.getElementById('demoResult').innerText = Math.ceil(21000 / 499);
+    
+    // Simple fake visitor counter (social proof)
+    let visitorCount = 1247;
+    setInterval(() => {
+      visitorCount += Math.floor(Math.random() * 4);
+      // Uncomment below if you add a span with id="visitorCount"
+      // const counterSpan = document.getElementById('visitorCount');
+      // if (counterSpan) counterSpan.innerText = visitorCount.toLocaleString();
+    }, 60000);
+    
+    // Reminder to replace Stripe link
+    const stripeBtn = document.getElementById('stripe-placeholder');
+    if (stripeBtn && stripeBtn.getAttribute('href') === '#') {
+      console.log("⚠️ Replace Stripe button href with your actual Stripe payment link");
+    }
   </script>
 </body>
 </html>

@@ -30,7 +30,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- HERO SECTION -->
     <div class="hero">
       <span class="js-badge">⚡ PURE JAVASCRIPT</span>
       <h1>JS-LeadMachine<br>Free Lead Gen Tool + Dev Services</h1>
@@ -45,7 +44,6 @@
       <p class="small-note">✨ Trusted by 340+ developers • Open source • MIT license</p>
     </div>
 
-    <!-- FREE DOWNLOAD SECTION -->
     <div class="card" id="free-download">
       <h2>📜 LeadGen.js – Open Source JavaScript Snippet</h2>
       <p>Copy, paste, and start collecting emails in 3 minutes. Works on any static HTML site.</p>
@@ -56,14 +54,12 @@
         }<br>
         <strong>> calculateLeadsNeeded(21000, 499)</strong><br>
         → <span id="demoResult">42</span> leads needed per month<br>
-        <button onclick="document.getElementById('demoResult').innerText = Math.ceil(21000/499)">▶ Run JS</button>
+        <button onclick="document.getElementById('demoResult').innerText = calculateLeadsNeeded(21000, 499)">▶ Run JS</button>
         </code>
       </div>
-      <a href="#" class="btn" style="background:#2c3e66;">📥 Download leadgen.js (Right-click → Save)</a>
       <p style="margin-top:1rem; font-size:0.8rem;">GitHub repo: <a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine" style="color:#00ff9d;">github.com/NileGazer00/NileGazer00-js-leadmachine</a></p>
     </div>
 
-    <!-- OFFER CARDS -->
     <div class="grid-2">
       <div class="card">
         <h3>🤖 Custom JS Automation</h3>
@@ -79,7 +75,6 @@
       </div>
     </div>
 
-    <!-- PAYMENT SECTION – ULTIMATE GENIUS MOVE -->
     <div class="card card-highlight" id="pro-payment">
       <h3>💸 GET LEADGEN.JS PRO – INSTANT ACCESS</h3>
       <p>Choose your payment method. You'll receive the Pro files within 1 hour of payment.</p>
@@ -91,7 +86,6 @@
       <p class="small-note">⚠️ For custom JS automation ($2,999+ projects): Send $500 deposit via PayPal, then email your requirements.</p>
     </div>
 
-    <!-- HIRE ME SECTION -->
     <div class="card" id="hire">
       <h3>💎 Why hire me (NileGazer00)?</h3>
       <ul style="margin-left: 1.5rem;">
@@ -108,7 +102,6 @@
       <p class="small-note">💰 Consultation fee ($150) applies to first hour, deductible from project total.</p>
     </div>
 
-    <!-- FOOTER -->
     <footer>
       <p>© 2026 JS-LeadMachine – Pure JavaScript lead generation tool. Open source under MIT.</p>
       <p>💸 PayPal: <a href="https://paypal.me/NileGazer00" style="color:#00ff9d;">paypal.me/NileGazer00</a> | 📧 Email: jusspound@gmail.com</p>
@@ -117,23 +110,21 @@
   </div>
 
   <script>
-    console.log("JS-LeadMachine active – ready for js.org review");
-    document.getElementById('demoResult').innerText = Math.ceil(21000 / 499);
-    
-    // Simple fake visitor counter (social proof)
-    let visitorCount = 1247;
-    setInterval(() => {
-      visitorCount += Math.floor(Math.random() * 4);
-      // Uncomment below if you add a span with id="visitorCount"
-      // const counterSpan = document.getElementById('visitorCount');
-      // if (counterSpan) counterSpan.innerText = visitorCount.toLocaleString();
-    }, 60000);
-    
-    // Reminder to replace Stripe link
-    const stripeBtn = document.getElementById('stripe-placeholder');
-    if (stripeBtn && stripeBtn.getAttribute('href') === '#') {
-      console.log("⚠️ Replace Stripe button href with your actual Stripe payment link");
+    // Clear any existing redirects
+    if (window.location.href.includes('js.org') && !window.location.href.includes('github.io')) {
+      // Do NOT redirect - just stay put
+      console.log("Custom domain active - no redirect");
     }
+    
+    // Define the function GLOBALLY so the button works
+    window.calculateLeadsNeeded = function(targetRevenue, avgSale) {
+      return Math.ceil(targetRevenue / avgSale);
+    };
+    
+    // Set initial value
+    document.getElementById('demoResult').innerText = window.calculateLeadsNeeded(21000, 499);
+    
+    console.log("JS-LeadMachine fully loaded - PayPal ready, no redirects");
   </script>
 </body>
 </html>

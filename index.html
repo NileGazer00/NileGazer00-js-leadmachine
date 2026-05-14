@@ -1,69 +1,650 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="LeadGen.js - Free open-source JavaScript library for lead capture to Google Sheets">
-  <title>LeadGen.js | Open Source JS Library</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: #0a0c10; color: #e4e6eb; line-height: 1.6; }
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-    h1 { color: #00ff9d; margin-bottom: 0.5rem; }
-    h2 { color: #00ff9d; margin: 2rem 0 1rem 0; }
-    .badge { background: #f7df1e; color: #000; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1rem; }
-    pre { background: #141824; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; border: 1px solid #2a2f3f; }
-    code { font-family: monospace; }
-    a { color: #00ff9d; }
-    footer { text-align: center; margin-top: 3rem; padding: 2rem; border-top: 1px solid #2a2f3f; font-size: 0.8rem; color: #6c7293; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadGen.js - Documentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.7; color: #333; background: #fff; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; padding: 60px 20px; background: #f7df1e; margin: -40px -20px 40px; }
+        header h1 { font-size: 2.5em; color: #000; }
+        header p { font-size: 1.2em; color: #333; margin-top: 10px; }
+        nav { background: #333; padding: 15px 20px; margin: -40px -20px 40px; position: sticky; top: 0; z-index: 100; }
+        nav a { color: #f7df1e; text-decoration: none; margin-right: 20px; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        h2 { font-size: 1.8em; color: #333; margin: 50px 0 20px; padding-bottom: 10px; border-bottom: 3px solid #f7df1e; }
+        h3 { font-size: 1.4em; color: #444; margin: 30px 0 15px; }
+        h4 { font-size: 1.1em; color: #555; margin: 20px 0 10px; }
+        p { margin: 15px 0; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; font-size: 0.9em; }
+        code { font-family: 'Fira Code', 'Consolas', monospace; }
+        .inline-code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-family: 'Fira Code', 'Consolas', monospace; color: #c7254e; }
+        ul, ol { margin: 15px 0 15px 30px; }
+        li { margin: 8px 0; }
+        .note { background: #fff3cd; border-left: 4px solid #f7df1e; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .warning { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .tip { background: #d4edda; border-left: 4px solid #28a745; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; }
+        th { background: #f7df1e; color: #000; font-weight: bold; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; margin-right: 5px; }
+        .badge-required { background: #dc3545; color: #fff; }
+        .badge-optional { background: #28a745; color: #fff; }
+        a { color: #0066cc; }
+        a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 40px 20px; margin-top: 60px; border-top: 1px solid #ddd; color: #777; }
+        .toc { background: #f9f9f9; padding: 20px 30px; border-radius: 8px; margin: 20px 0; }
+        .toc ul { list-style: none; margin: 0; padding: 0; }
+        .toc li { margin: 5px 0; }
+        .toc a { color: #0066cc; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        .section { margin-bottom: 40px; }
+        .return-type { color: #0066cc; font-weight: bold; }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <span class="badge">⚡ OPEN SOURCE · MIT LICENSE</span>
-    <h1>LeadGen.js</h1>
-    <p>Zero-dependency JavaScript library that captures leads directly to Google Sheets. No backend required.</p>
+    <header>
+        <h1>LeadGen.js</h1>
+        <p>Zero-dependency JavaScript library for capturing leads directly to Google Sheets</p>
+        <p style="margin-top: 20px;">
+            <span class="badge" style="background:#333;color:#f7df1e;">MIT License</span>
+            <span class="badge" style="background:#28a745;color:#fff;">Zero Dependencies</span>
+            <span class="badge" style="background:#0066cc;color:#fff;">Vanilla JS</span>
+            <span class="badge" style="background:#6f42c1;color:#fff;">No Backend</span>
+        </p>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#getting-started">Getting Started</a>
+        <a href="#installation">Installation</a>
+        <a href="#google-sheets-setup">Google Sheets Setup</a>
+        <a href="#api-reference">API Reference</a>
+        <a href="#examples">Examples</a>
+        <a href="#configuration">Configuration</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contributing">Contributing</a>
+    </nav>
+    <div class="container">
+        <div class="toc">
+            <h3 style="margin-top:0;">Table of Contents</h3>
+            <ul>
+                <li><a href="#home">About LeadGen.js</a></li>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#google-sheets-setup">Google Sheets Setup</a></li>
+                <li><a href="#api-reference">API Reference</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contributing">Contributing</a></li>
+            </ul>
+        </div>
+        <div class="section" id="home">
+            <h2>About LeadGen.js</h2>
+            <p>LeadGen.js is a lightweight, zero-dependency vanilla JavaScript library designed for frontend developers who need to capture form submissions and store lead data directly in Google Sheets without setting up any backend infrastructure.</p>
+            <p>Traditional lead capture solutions require a backend server, database, and API endpoints. LeadGen.js eliminates this complexity by using Google Sheets as a no-code backend. Simply include the script, configure your Google Sheets web app URL, and your forms will automatically submit data to your spreadsheet.</p>
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>Zero Dependencies</strong> - No npm packages, no frameworks required. Works with plain HTML.</li>
+                <li><strong>No Backend Required</strong> - Google Sheets acts as your database.</li>
+                <li><strong>Framework Agnostic</strong> - Works with React, Vue, Angular, Svelte, or vanilla JS.</li>
+                <li><strong>Lightweight</strong> - Under 3KB minified and gzipped.</li>
+                <li><strong>Form Validation</strong> - Built-in client-side validation with custom rules.</li>
+                <li><strong>Theme Support</strong> - Light and dark themes included, fully customizable.</li>
+                <li><strong>Analytics Tracking</strong> - Built-in submission counters and conversion metrics.</li>
+                <li><strong>CDN Available</strong> - Load directly from jsDelivr without any build step.</li>
+                <li><strong>MIT Licensed</strong> - Free for personal and commercial use.</li>
+            </ul>
+            <h3>Use Cases</h3>
+            <ul>
+                <li>Landing page contact forms</li>
+                <li>Newsletter signup forms</li>
+                <li>Lead generation for marketing campaigns</li>
+                <li>Event registration forms</li>
+                <li>Customer feedback collection</li>
+                <li>Static site contact forms (JAMstack, GitHub Pages, Netlify)</li>
+                <li>Simple CRM data entry without a full backend</li>
+            </ul>
+        </div>
+        <div class="section" id="getting-started">
+            <h2>Getting Started</h2>
+            <p>This guide walks you through setting up LeadGen.js from scratch. You will need a Google account and a basic HTML page.</p>
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>A Google account (free)</li>
+                <li>A Google Sheet to store your leads</li>
+                <li>A basic HTML page with a form</li>
+                <li>No server, no database, no npm required</li>
+            </ul>
+            <h3>Step 1: Create Your HTML Form</h3>
+            <p>Create an HTML file with a form. The form should have input fields with <span class="inline-code">name</span> attributes - these names will become column headers in your Google Sheet.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Lead Form&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form id="my-lead-form"&gt;
+        &lt;input type="text" name="firstName" placeholder="First Name" required&gt;
+        &lt;input type="text" name="lastName" placeholder="Last Name" required&gt;
+        &lt;input type="email" name="email" placeholder="Email Address" required&gt;
+        &lt;input type="tel" name="phone" placeholder="Phone Number"&gt;
+        &lt;select name="interest"&gt;
+            &lt;option value="product"&gt;Product Inquiry&lt;/option&gt;
+            &lt;option value="support"&gt;Support&lt;/option&gt;
+            &lt;option value="other"&gt;Other&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;textarea name="message" placeholder="Your message"&gt;&lt;/textarea&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;script src="https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        LeadGen.init({
+            formId: "my-lead-form",
+            sheetUrl: "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL",
+            theme: "light"
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <div class="note"><strong>Note:</strong> The <span class="inline-code">name</span> attributes on your form inputs are critical. They determine the column headers in your Google Sheet. Use camelCase or snake_case for consistency.</div>
+            <h3>Step 2: Set Up Google Sheets</h3>
+            <p>Follow the <a href="#google-sheets-setup">Google Sheets Setup Guide</a> to create your Google Apps Script web app URL.</p>
+            <h3>Step 3: Initialize LeadGen.js</h3>
+            <p>Replace <span class="inline-code">YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL</span> with the URL you received from publishing your Google Apps Script. When a user submits the form, the data will be sent to your Google Sheet automatically.</p>
+            <h3>Step 4: Test Your Form</h3>
+            <p>Open your HTML page in a browser, fill out the form, and submit it. Check your Google Sheet - you should see a new row with the submitted data. Open the browser console (F12) to see debug logs from LeadGen.js.</p>
+        </div>
+        <div class="section" id="installation">
+            <h2>Installation</h2>
+            <p>LeadGen.js can be loaded in multiple ways depending on your project setup.</p>
+            <h3>Option 1: CDN (Recommended for simple sites)</h3>
+            <pre><code>&lt;script src="https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js"&gt;&lt;/script&gt;</code></pre>
+            <h3>Option 2: Download the file</h3>
+            <pre><code>&lt;script src="/path/to/leadgen.js"&gt;&lt;/script&gt;</code></pre>
+            <h3>Option 3: ES Module import</h3>
+            <pre><code>&lt;script type="module"&gt;
+    import { LeadGen } from "https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.module.js";
+    LeadGen.init({ formId: "my-form", sheetUrl: "YOUR_WEB_APP_URL" });
+&lt;/script&gt;</code></pre>
+            <h3>Option 4: Using with npm/bundlers</h3>
+            <pre><code>npm install leadgen-js</code></pre>
+            <pre><code>// CommonJS
+const { LeadGen } = require("leadgen-js");
+// ES Modules
+import { LeadGen } from "leadgen-js";</code></pre>
+            <div class="tip"><strong>Tip:</strong> For production sites, use a specific version tag instead of @main to avoid breaking changes: <span class="inline-code">https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js@1.0.0/leadgen.js</span></div>
+        </div>
+        <div class="section" id="google-sheets-setup">
+            <h2>Google Sheets Setup Guide</h2>
+            <p>This step-by-step guide explains how to set up Google Sheets to receive data from LeadGen.js using a Google Apps Script web app.</p>
+            <h3>Step 1: Create a New Google Sheet</h3>
+            <ol>
+                <li>Go to <a href="https://sheets.google.com" target="_blank">sheets.google.com</a></li>
+                <li>Click <strong>"+ Blank"</strong> to create a new spreadsheet</li>
+                <li>Name your spreadsheet (e.g., "Lead Capture Data")</li>
+                <li>In row 1, add your column headers exactly matching your form field names: <code>| firstName | lastName | email | phone | interest | message | timestamp |</code></li>
+            </ol>
+            <div class="note"><strong>Important:</strong> The column headers must exactly match the <span class="inline-code">name</span> attributes on your HTML form inputs. LeadGen.js automatically adds a <span class="inline-code">timestamp</span> column.</div>
+            <h3>Step 2: Open Google Apps Script</h3>
+            <ol>
+                <li>In your Google Sheet, click <strong>Extensions - Apps Script</strong></li>
+                <li>A new tab will open with the Apps Script editor</li>
+                <li>Delete any existing code in the editor</li>
+            </ol>
+            <h3>Step 3: Paste the Server-Side Code</h3>
+            <pre><code>function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    data.timestamp = new Date().toISOString();
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    if (headers.indexOf("timestamp") === -1) {
+      sheet.appendRow(["timestamp"]);
+      headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    }
+    var rowData = headers.map(function(header) {
+      return data[header] || "";
+    });
+    sheet.appendRow(rowData);
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: "success", message: "Lead captured successfully" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
 
-    <h2>📦 Installation</h2>
-    <pre><code>&lt;script src="https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js"&gt;&lt;/script&gt;
-&lt;div id="leadgen-form"&gt;&lt;/div&gt;</code></pre>
-
-    <h2>⚙️ Usage</h2>
-    <pre><code>LeadGen.init({
-  sheetId: "YOUR_GOOGLE_SHEETS_ID",
-  theme: "dark"
+function doGet(e) {
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: "active", message: "LeadGen.js web app is running" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}</code></pre>
+            <h3>Step 4: Deploy as Web App</h3>
+            <ol>
+                <li>Click <strong>Deploy - New deployment</strong></li>
+                <li>Click the gear icon next to "Select type" and choose <strong>Web app</strong></li>
+                <li>Set the following options:
+                    <ul>
+                        <li><strong>Description:</strong> "LeadGen.js API"</li>
+                        <li><strong>Execute as:</strong> "Me" (your Google account)</li>
+                        <li><strong>Who has access:</strong> "Anyone"</li>
+                    </ul>
+                </li>
+                <li>Click <strong>Deploy</strong></li>
+                <li>Authorize the script when prompted (click your account - Advanced - Go to script)</li>
+                <li>Copy the <strong>Web app URL</strong> - this is your <span class="inline-code">sheetUrl</span></li>
+            </ol>
+            <div class="warning"><strong>Warning:</strong> You MUST set "Who has access" to "Anyone" or your form submissions will fail with a 401 error. The script runs under your Google account permissions, so your sheet remains private.</div>
+            <h3>Step 5: Test the Web App</h3>
+            <p>Open the web app URL in your browser. You should see:</p>
+            <pre><code>{"status":"active","message":"LeadGen.js web app is running"}</code></pre>
+            <p>If you see this, your web app is working correctly.</p>
+        </div>
+        <div class="section" id="api-reference">
+            <h2>API Reference</h2>
+            <h3>LeadGen.init(config)</h3>
+            <p>Initializes LeadGen.js on a form element. This is the main entry point for the library. Call this method after the DOM is loaded and after including the LeadGen.js script.</p>
+            <h4>Parameters</h4>
+            <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="inline-code">config</span></td><td>Object</td><td><span class="badge badge-required">Yes</span></td><td>-</td><td>Configuration object</td></tr>
+                    <tr><td><span class="inline-code">config.formId</span></td><td>String</td><td><span class="badge badge-required">Yes</span></td><td>null</td><td>The ID of the HTML form element to attach LeadGen to</td></tr>
+                    <tr><td><span class="inline-code">config.sheetUrl</span></td><td>String</td><td><span class="badge badge-required">Yes</span></td><td>null</td><td>The Google Apps Script web app URL</td></tr>
+                    <tr><td><span class="inline-code">config.theme</span></td><td>String</td><td><span class="badge badge-optional">No</span></td><td>"light"</td><td>Theme for form styling: "light", "dark", or "none"</td></tr>
+                    <tr><td><span class="inline-code">config.validate</span></td><td>Boolean</td><td><span class="badge badge-optional">No</span></td><td>true</td><td>Enable built-in form validation</td></tr>
+                    <tr><td><span class="inline-code">config.debug</span></td><td>Boolean</td><td><span class="badge badge-optional">No</span></td><td>false</td><td>Enable console debug logging</td></tr>
+                    <tr><td><span class="inline-code">config.onSuccess</span></td><td>Function</td><td><span class="badge badge-optional">No</span></td><td>null</td><td>Callback function fired after successful submission</td></tr>
+                    <tr><td><span class="inline-code">config.onError</span></td><td>Function</td><td><span class="badge badge-optional">No</span></td><td>null</td><td>Callback function fired when submission fails</td></tr>
+                    <tr><td><span class="inline-code">config.customHeaders</span></td><td>Object</td><td><span class="badge badge-optional">No</span></td><td>{}</td><td>Additional HTTP headers sent with each request</td></tr>
+                </tbody>
+            </table>
+            <h4>Returns</h4>
+            <p><span class="return-type">void</span></p>
+            <h4>Example</h4>
+            <pre><code>LeadGen.init({
+    formId: "contact-form",
+    sheetUrl: "https://script.google.com/macros/s/YOUR_ID/exec",
+    theme: "dark",
+    validate: true,
+    debug: true,
+    onSuccess: function(response) {
+        console.log("Lead captured:", response);
+        alert("Thank you! We will be in touch.");
+    },
+    onError: function(error) {
+        console.error("Submission failed:", error);
+        alert("Something went wrong. Please try again.");
+    }
 });</code></pre>
+            <h3>LeadGen.calculateNeeded(target, avg)</h3>
+            <p>Calculates the number of leads needed to reach a revenue target based on an average customer value. This is useful for marketing planning and setting lead generation goals.</p>
+            <h4>Parameters</h4>
+            <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="inline-code">target</span></td><td>Number</td><td><span class="badge badge-required">Yes</span></td><td>The revenue target in dollars (e.g., 21000)</td></tr>
+                    <tr><td><span class="inline-code">avg</span></td><td>Number</td><td><span class="badge badge-required">Yes</span></td><td>The average revenue per customer in dollars (e.g., 499)</td></tr>
+                </tbody>
+            </table>
+            <h4>Returns</h4>
+            <p><span class="return-type">Number</span> - The number of leads needed (rounded up to the nearest integer)</p>
+            <h4>Example</h4>
+            <pre><code>var leads = LeadGen.calculateNeeded(21000, 499);
+console.log(leads); // Output: 43
 
-    <h2>📊 Calculate Leads</h2>
-    <pre><code>LeadGen.calculateNeeded(21000, 499); // Returns 42 leads</code></pre>
+var subs = LeadGen.calculateNeeded(5000, 99);
+console.log(subs); // Output: 51</code></pre>
+            <div class="note"><strong>Formula:</strong> <span class="inline-code">Math.ceil(target / avg)</span> - The result is always rounded up because partial leads do not exist.</div>
+            <h3>LeadGen.setTheme(theme)</h3>
+            <p>Changes the form theme at runtime without re-initializing. Useful for implementing dark mode toggles.</p>
+            <h4>Parameters</h4>
+            <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="inline-code">theme</span></td><td>String</td><td><span class="badge badge-required">Yes</span></td><td>"light", "dark", or "none" (removes all LeadGen styling)</td></tr>
+                </tbody>
+            </table>
+            <h4>Returns</h4>
+            <p><span class="return-type">void</span></p>
+            <h4>Example</h4>
+            <pre><code>document.getElementById("dark-toggle").addEventListener("click", function() {
+    LeadGen.setTheme("dark");
+});
+document.getElementById("light-toggle").addEventListener("click", function() {
+    LeadGen.setTheme("light");
+});</code></pre>
+            <h3>LeadGen.getAnalytics()</h3>
+            <p>Returns analytics data about form submissions stored in the current session. Data is stored in sessionStorage and resets when the browser session ends.</p>
+            <h4>Returns</h4>
+            <p><span class="return-type">Object</span> - An analytics object with the following properties:</p>
+            <table>
+                <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="inline-code">totalAttempts</span></td><td>Number</td><td>Total number of form submission attempts</td></tr>
+                    <tr><td><span class="inline-code">successful</span></td><td>Number</td><td>Number of successful submissions</td></tr>
+                    <tr><td><span class="inline-code">failed</span></td><td>Number</td><td>Number of failed submissions</td></tr>
+                    <tr><td><span class="inline-code">validationErrors</span></td><td>Number</td><td>Number of submissions blocked by validation</td></tr>
+                    <tr><td><span class="inline-code">conversionRate</span></td><td>String</td><td>Percentage of successful submissions (e.g., "85.7%")</td></tr>
+                </tbody>
+            </table>
+            <h4>Example</h4>
+            <pre><code>var stats = LeadGen.getAnalytics();
+console.log("Conversion rate:", stats.conversionRate);
+console.log("Successful:", stats.successful);
+console.log("Failed:", stats.failed);</code></pre>
+            <h3>LeadGen.destroy()</h3>
+            <p>Removes all LeadGen event listeners and resets the instance. Useful for single-page applications where forms are dynamically added and removed from the DOM.</p>
+            <h4>Returns</h4>
+            <p><span class="return-type">void</span></p>
+            <h4>Example</h4>
+            <pre><code>LeadGen.destroy();
+document.getElementById("my-form").remove();
+LeadGen.init({ formId: "my-form", sheetUrl: url });</code></pre>
+            <h3>LeadGen.validateForm(formId)</h3>
+            <p>Manually triggers form validation without submitting. Returns validation results so you can display custom error messages.</p>
+            <h4>Returns</h4>
+            <p><span class="return-type">Object</span> - <span class="inline-code">{ valid: Boolean, errors: String[] }</span></p>
+            <h4>Example</h4>
+            <pre><code>var result = LeadGen.validateForm("my-form");
+if (!result.valid) {
+    console.log("Invalid fields:", result.errors);
+    result.errors.forEach(function(err) {
+        console.warn(err);
+    });
+}</code></pre>
+        </div>
+        <div class="section" id="examples">
+            <h2>Examples</h2>
+            <h3>Example 1: Basic Contact Form</h3>
+            <pre><code>&lt;form id="basic-form"&gt;
+    &lt;input type="text" name="name" placeholder="Your Name" required&gt;
+    &lt;input type="email" name="email" placeholder="Email" required&gt;
+    &lt;textarea name="message" placeholder="Message"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    LeadGen.init({
+        formId: "basic-form",
+        sheetUrl: "https://script.google.com/macros/s/YOUR_ID/exec"
+    });
+&lt;/script&gt;</code></pre>
+            <h3>Example 2: Form with Custom Validation and Callbacks</h3>
+            <pre><code>LeadGen.init({
+    formId: "signup-form",
+    sheetUrl: "https://script.google.com/macros/s/YOUR_ID/exec",
+    validate: true,
+    debug: true,
+    onSuccess: function(response) {
+        document.getElementById("signup-form").style.display = "none";
+        document.getElementById("success-msg").style.display = "block";
+    },
+    onError: function(error) {
+        document.getElementById("error-msg").textContent = "Error: " + error.message;
+        document.getElementById("error-msg").style.display = "block";
+    }
+});</code></pre>
+            <h3>Example 3: Using with React</h3>
+            <pre><code>import React, { useEffect, useRef } from "react";
 
-    <h2>📤 Google Sheets Setup</h2>
-    <ol style="margin-left: 1.5rem;">
-      <li>Create a Google Sheet</li>
-      <li>Copy the Sheet ID from the URL</li>
-      <li>Enable Google Sheets API</li>
-      <li>Create an API key</li>
-    </ol>
-
-    <h2>📝 API Reference</h2>
-    <pre><code>LeadGen.init(config)              // Initialize
-LeadGen.calculateNeeded(target, avg)  // Calculate leads needed
-LeadGen.setTheme(theme)           // Change theme
-LeadGen.getAnalytics()            // Get stats</code></pre>
-
-    <h2>🧪 Live Demo</h2>
-    <p>Open browser console (F12) and run:</p>
-    <pre><code>calculateLeadsNeeded(21000, 499); // Returns 42</code></pre>
-
-    <footer>
-      <p>© 2026 LeadGen.js – MIT License</p>
-      <p><a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine">GitHub Repository</a></p>
-    </footer>
-  </div>
-  <script>
-    window.calculateLeadsNeeded = function(target, avg) {
-      return Math.ceil(target / avg);
+function LeadForm() {
+    const formRef = useRef(null);
+    useEffect(function() {
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js";
+        script.onload = function() {
+            LeadGen.init({
+                formId: "react-lead-form",
+                sheetUrl: "https://script.google.com/macros/s/YOUR_ID/exec",
+                validate: true,
+                onSuccess: function() { alert("Lead captured!"); }
+            });
+        };
+        document.body.appendChild(script);
+        return function() {
+            LeadGen.destroy();
+            document.body.removeChild(script);
+        };
+    }, []);
+    return (
+        &lt;form id="react-lead-form" ref={formRef}&gt;
+            &lt;input type="text" name="name" placeholder="Name" required /&gt;
+            &lt;input type="email" name="email" placeholder="Email" required /&gt;
+            &lt;button type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+    );
+}</code></pre>
+            <h3>Example 4: Using with Vue 3</h3>
+            <pre><code>&lt;template&gt;
+    &lt;form id="vue-lead-form"&gt;
+        &lt;input type="text" name="name" v-model="form.name" placeholder="Name"&gt;
+        &lt;input type="email" name="email" v-model="form.email" placeholder="Email"&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+    data() { return { form: { name: "", email: "" } }; },
+    mounted() {
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js";
+        script.onload = () => {
+            LeadGen.init({
+                formId: "vue-lead-form",
+                sheetUrl: "https://script.google.com/macros/s/YOUR_ID/exec"
+            });
+        };
+        document.head.appendChild(script);
+    },
+    beforeUnmount() { LeadGen.destroy(); }
+};
+&lt;/script&gt;</code></pre>
+            <h3>Example 5: Multi-Step Form</h3>
+            <pre><code>&lt;div id="step-1" class="form-step"&gt;
+    &lt;input type="text" name="firstName" placeholder="First Name" required&gt;
+    &lt;input type="text" name="lastName" placeholder="Last Name" required&gt;
+    &lt;button type="button" onclick="nextStep()"&gt;Next&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id="step-2" class="form-step" style="display:none;"&gt;
+    &lt;input type="email" name="email" placeholder="Email" required&gt;
+    &lt;input type="tel" name="phone" placeholder="Phone"&gt;
+    &lt;button type="button" onclick="prevStep()"&gt;Back&lt;/button&gt;
+    &lt;button type="button" onclick="submitForm()"&gt;Submit&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+function nextStep() {
+    document.getElementById("step-1").style.display = "none";
+    document.getElementById("step-2").style.display = "block";
+}
+function prevStep() {
+    document.getElementById("step-2").style.display = "none";
+    document.getElementById("step-1").style.display = "block";
+}
+function submitForm() {
+    var data = {
+        firstName: document.querySelector('[name="firstName"]').value,
+        lastName: document.querySelector('[name="lastName"]').value,
+        email: document.querySelector('[name="email"]').value,
+        phone: document.querySelector('[name="phone"]').value
     };
-  </script>
+    LeadGen.sendData(data);
+}
+&lt;/script&gt;</code></pre>
+            <h3>Example 6: Dark Mode Toggle</h3>
+            <pre><code>&lt;button id="toggle-theme"&gt;Toggle Dark Mode&lt;/button&gt;
+&lt;script&gt;
+document.getElementById("toggle-theme").addEventListener("click", function() {
+    var current = document.body.getAttribute("data-theme");
+    if (current === "dark") {
+        document.body.setAttribute("data-theme", "light");
+        LeadGen.setTheme("light");
+    } else {
+        document.body.setAttribute("data-theme", "dark");
+        LeadGen.setTheme("dark");
+    }
+});
+&lt;/script&gt;</code></pre>
+        </div>
+        <div class="section" id="configuration">
+            <h2>Configuration Options</h2>
+            <p>Full reference of all configuration options available in <span class="inline-code">LeadGen.init()</span>.</p>
+            <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="inline-code">formId</span></td><td>String</td><td>null</td><td>ID of the form element to attach to</td></tr>
+                    <tr><td><span class="inline-code">sheetUrl</span></td><td>String</td><td>null</td><td>Google Apps Script web app URL</td></tr>
+                    <tr><td><span class="inline-code">theme</span></td><td>String</td><td>"light"</td><td>"light", "dark", or "none"</td></tr>
+                    <tr><td><span class="inline-code">validate</span></td><td>Boolean</td><td>true</td><td>Enable HTML5 form validation</td></tr>
+                    <tr><td><span class="inline-code">debug</span></td><td>Boolean</td><td>false</td><td>Log all operations to console</td></tr>
+                    <tr><td><span class="inline-code">onSuccess</span></td><td>Function</td><td>null</td><td>Success callback: function(response)</td></tr>
+                    <tr><td><span class="inline-code">onError</span></td><td>Function</td><td>null</td><td>Error callback: function(error)</td></tr>
+                    <tr><td><span class="inline-code">customHeaders</span></td><td>Object</td><td>{}</td><td>Extra HTTP headers for requests</td></tr>
+                    <tr><td><span class="inline-code">timeout</span></td><td>Number</td><td>10000</td><td>Request timeout in milliseconds</td></tr>
+                    <tr><td><span class="inline-code">redirectUrl</span></td><td>String</td><td>null</td><td>URL to redirect to after successful submission</td></tr>
+                    <tr><td><span class="inline-code">resetForm</span></td><td>Boolean</td><td>true</td><td>Reset form fields after successful submission</td></tr>
+                    <tr><td><span class="inline-code">disableOnSubmit</span></td><td>Boolean</td><td>true</td><td>Disable submit button while request is in progress</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="section" id="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <h3>"Form submission failed" error</h3>
+            <p><strong>Cause:</strong> The Google Apps Script web app URL is incorrect or the script has an error.</p>
+            <p><strong>Fix:</strong></p>
+            <ol>
+                <li>Open your web app URL in a browser - you should see <span class="inline-code">{"status":"active"}</span></li>
+                <li>If you see an error, re-deploy the script in Google Apps Script</li>
+                <li>Make sure "Who has access" is set to "Anyone"</li>
+                <li>Check the URL does not have trailing spaces or characters</li>
+            </ol>
+            <h3>CORS error in browser console</h3>
+            <p><strong>Cause:</strong> Google Apps Script blocks cross-origin requests when not properly deployed.</p>
+            <p><strong>Fix:</strong></p>
+            <ol>
+                <li>Go to Google Apps Script - Deploy - Manage deployments</li>
+                <li>Click the pencil icon to edit the deployment</li>
+                <li>Set "Execute as" to "Me"</li>
+                <li>Set "Who has access" to "Anyone"</li>
+                <li>Save and test the URL again in your browser</li>
+            </ol>
+            <h3>Data not appearing in Google Sheet</h3>
+            <p><strong>Cause:</strong> Column headers in the sheet do not match form field names.</p>
+            <p><strong>Fix:</strong></p>
+            <ol>
+                <li>Compare your form input <span class="inline-code">name</span> attributes with your Google Sheet column headers</li>
+                <li>They must match exactly (case-sensitive)</li>
+                <li>Enable debug mode: <span class="inline-code">LeadGen.init({ ..., debug: true })</span></li>
+                <li>Check the console output to see what data is being sent</li>
+            </ol>
+            <h3>Form submits but page reloads</h3>
+            <p><strong>Cause:</strong> LeadGen.js is not intercepting the form submit event.</p>
+            <p><strong>Fix:</strong></p>
+            <ol>
+                <li>Make sure the <span class="inline-code">formId</span> matches the actual ID of your form element</li>
+                <li>Make sure <span class="inline-code">LeadGen.init()</span> is called after the form exists in the DOM</li>
+                <li>Wrap your init call in <span class="inline-code">DOMContentLoaded</span> or place the script at the bottom of the body</li>
+            </ol>
+            <pre><code>document.addEventListener("DOMContentLoaded", function() {
+    LeadGen.init({ formId: "my-form", sheetUrl: "YOUR_URL" });
+});</code></pre>
+            <h3>"401 Unauthorized" from Google Apps Script</h3>
+            <p><strong>Cause:</strong> The web app is not set to allow anonymous access.</p>
+            <p><strong>Fix:</strong> Re-deploy with "Who has access" set to "Anyone" - see Step 4 in the Google Sheets Setup Guide.</p>
+            <h3>Validation errors on valid inputs</h3>
+            <p><strong>Cause:</strong> HTML5 validation attributes (required, pattern, type) are too strict.</p>
+            <p><strong>Fix:</strong> Either adjust your HTML attributes or disable built-in validation:</p>
+            <pre><code>LeadGen.init({ formId: "my-form", sheetUrl: "YOUR_URL", validate: false });</code></pre>
+        </div>
+        <div class="section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <h3>Is LeadGen.js free?</h3>
+            <p>Yes. LeadGen.js is released under the MIT License, which means it is free for personal and commercial use. You can use it in any project without paying fees or royalties.</p>
+            <h3>Does it work with React/Vue/Angular?</h3>
+            <p>Yes. LeadGen.js is framework-agnostic because it operates on standard HTML form elements. See the Examples section for React and Vue integration code.</p>
+            <h3>Is my Google Sheet data secure?</h3>
+            <p>Your Google Sheet remains private. The Google Apps Script runs under your Google account permissions. External users can only send data to your sheet through the web app endpoint - they cannot read or modify existing data.</p>
+            <h3>Can I use this on GitHub Pages?</h3>
+            <p>Yes. LeadGen.js is designed specifically for static hosting platforms like GitHub Pages, Netlify, Vercel, and Cloudflare Pages. No server-side code is needed.</p>
+            <h3>What happens if Google Apps Script is down?</h3>
+            <p>Google Apps Script has a 99.9% uptime SLA. If it does go down, form submissions will fail and the <span class="inline-code">onError</span> callback will fire. You can implement a fallback such as showing a message asking users to email you directly.</p>
+            <h3>Is there a rate limit?</h3>
+            <p>Google Apps Script has a quota of 20,000 URL fetch requests per day for free accounts. For most lead generation forms, this is more than sufficient. Google Workspace accounts have higher limits.</p>
+            <h3>Can I submit data to multiple sheets?</h3>
+            <p>Yes. Initialize multiple instances with different form IDs and sheet URLs:</p>
+            <pre><code>LeadGen.init({
+    formId: "contact-form",
+    sheetUrl: "https://script.google.com/macros/s/ID_CONTACT/exec"
+});
+LeadGen.init({
+    formId: "newsletter-form",
+    sheetUrl: "https://script.google.com/macros/s/ID_NEWSLETTER/exec"
+});</code></pre>
+            <h3>Can I customize the form styling?</h3>
+            <p>Yes. Set <span class="inline-code">theme: "none"</span> to disable all LeadGen styling and apply your own CSS. The library only modifies the form element you specify and does not affect the rest of your page.</p>
+            <h3>Does it support file uploads?</h3>
+            <p>No. LeadGen.js is designed for text-based form data. File uploads require a backend server for processing and storage.</p>
+            <h3>How do I add a honeypot field for spam protection?</h3>
+            <pre><code>&lt;input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off"&gt;
+&lt;script&gt;
+LeadGen.init({
+    formId: "my-form",
+    sheetUrl: "YOUR_URL",
+    onSuccess: function(response) {
+        var honeypot = document.querySelector('[name="website"]').value;
+        if (honeypot) {
+            console.warn("Spam detected - honeypot field was filled");
+            return;
+        }
+    }
+});
+&lt;/script&gt;</code></pre>
+        </div>
+        <div class="section" id="contributing">
+            <h2>Contributing</h2>
+            <p>Contributions to LeadGen.js are welcome. This is an open-source project and we appreciate all help from the JavaScript community.</p>
+            <h3>How to Contribute</h3>
+            <ol>
+                <li><strong>Fork the repository</strong> on GitHub</li>
+                <li><strong>Create a feature branch:</strong> <span class="inline-code">git checkout -b feature/your-feature-name</span></li>
+                <li><strong>Make your changes</strong> with clear, commented code</li>
+                <li><strong>Test your changes</strong> in multiple browsers (Chrome, Firefox, Safari, Edge)</li>
+                <li><strong>Commit with a descriptive message:</strong> <span class="inline-code">git commit -m "Add: description of change"</span></li>
+                <li><strong>Push to your fork:</strong> <span class="inline-code">git push origin feature/your-feature-name</span></li>
+                <li><strong>Open a Pull Request</strong> against the main branch</li>
+            </ol>
+            <h3>Reporting Bugs</h3>
+            <p>If you find a bug, please open a GitHub issue with:</p>
+            <ul>
+                <li>A clear description of the bug</li>
+                <li>Steps to reproduce</li>
+                <li>Browser name and version</li>
+                <li>Console error messages (if any)</li>
+                <li>A minimal code example that demonstrates the issue</li>
+            </ul>
+            <h3>Code Style</h3>
+            <ul>
+                <li>Use ES5 syntax for maximum compatibility (no arrow functions, no let/const in core code)</li>
+                <li>Use JSDoc comments for all public methods</li>
+                <li>Indent with 2 spaces</li>
+                <li>No semicolons required but keep consistent within files</li>
+            </ul>
+            <h3>License</h3>
+            <p>By contributing to LeadGen.js, you agree that your contributions will be licensed under the MIT License.</p>
+        </div>
+        <footer>
+            <p>LeadGen.js - MIT License</p>
+            <p><a href="https://github.com/NileGazer00/leadgen.js">GitHub Repository</a></p>
+        </footer>
+    </div>
 </body>
 </html>

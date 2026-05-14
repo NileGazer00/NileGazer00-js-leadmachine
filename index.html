@@ -7,14 +7,14 @@
   <title>LeadGen.js | Open Source JS Library</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0c10; color: #e4e6eb; line-height: 1.6; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0a0c10; color: #e4e6eb; line-height: 1.6; }
     .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-    h1 { color: #00ff9d; margin-bottom: 1rem; font-size: 2.5rem; }
+    h1 { color: #00ff9d; margin-bottom: 0.5rem; }
     h2 { color: #00ff9d; margin: 2rem 0 1rem 0; }
-    .badge { background: #f7df1e; color: #000; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 1rem; }
+    .badge { background: #f7df1e; color: #000; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1rem; }
     pre { background: #141824; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; border: 1px solid #2a2f3f; }
-    code { font-family: 'Fira Code', monospace; font-size: 0.9rem; }
-    a { color: #00ff9d; text-decoration: none; }
+    code { font-family: monospace; }
+    a { color: #00ff9d; }
     footer { text-align: center; margin-top: 3rem; padding: 2rem; border-top: 1px solid #2a2f3f; font-size: 0.8rem; color: #6c7293; }
   </style>
 </head>
@@ -22,52 +22,48 @@
   <div class="container">
     <span class="badge">⚡ OPEN SOURCE · MIT LICENSE</span>
     <h1>LeadGen.js</h1>
-    <p>A lightweight, zero-dependency JavaScript library that captures leads directly to Google Sheets. No backend required.</p>
+    <p>Zero-dependency JavaScript library that captures leads directly to Google Sheets. No backend required.</p>
 
     <h2>📦 Installation</h2>
     <pre><code>&lt;script src="https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js"&gt;&lt;/script&gt;
 &lt;div id="leadgen-form"&gt;&lt;/div&gt;</code></pre>
 
-    <h2>⚙️ Basic Usage</h2>
+    <h2>⚙️ Usage</h2>
     <pre><code>LeadGen.init({
   sheetId: "YOUR_GOOGLE_SHEETS_ID",
   theme: "dark"
 });</code></pre>
 
-    <h2>📊 Calculate Leads Needed</h2>
-    <pre><code>// How many leads to hit $21k/month?
-LeadGen.calculateNeeded(21000, 499);
-// Returns: 42 leads</code></pre>
+    <h2>📊 Calculate Leads</h2>
+    <pre><code>LeadGen.calculateNeeded(21000, 499); // Returns 42 leads</code></pre>
 
     <h2>📤 Google Sheets Setup</h2>
     <ol style="margin-left: 1.5rem;">
       <li>Create a Google Sheet</li>
       <li>Copy the Sheet ID from the URL</li>
-      <li>Enable Google Sheets API in Google Cloud Console</li>
-      <li>Create an API key and restrict it to Sheets API</li>
+      <li>Enable Google Sheets API</li>
+      <li>Create an API key</li>
     </ol>
 
     <h2>📝 API Reference</h2>
-    <pre><code>LeadGen.init(config)           // Initialize the form
+    <pre><code>LeadGen.init(config)              // Initialize
 LeadGen.calculateNeeded(target, avg)  // Calculate leads needed
-LeadGen.setTheme(theme)        // Change theme (dark/light)
-LeadGen.getAnalytics()         // Get submission stats</code></pre>
+LeadGen.setTheme(theme)           // Change theme
+LeadGen.getAnalytics()            // Get stats</code></pre>
 
-    <h2>🧪 Try It Now</h2>
-    <p>Open your browser console (F12) and run:</p>
-    <pre><code>calculateLeadsNeeded(21000, 499); // Returns 42 leads needed per month</code></pre>
+    <h2>🧪 Live Demo</h2>
+    <p>Open browser console (F12) and run:</p>
+    <pre><code>calculateLeadsNeeded(21000, 499); // Returns 42</code></pre>
 
     <footer>
       <p>© 2026 LeadGen.js – MIT License</p>
       <p><a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine">GitHub Repository</a></p>
     </footer>
   </div>
-
   <script>
     window.calculateLeadsNeeded = function(target, avg) {
       return Math.ceil(target / avg);
     };
-    console.log("LeadGen.js documentation loaded");
   </script>
 </body>
 </html>

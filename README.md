@@ -50,7 +50,7 @@ The documentation is built as a **single-page static site** (`index.html`) with 
 
 If you're looking to **use LeadGen.js** in your project, head straight to the live docs:
 
-👉 **[js-leadmachine.js.org](https://js-leadmachine.js.org)**
+👉 **[js-leadmachine.js.org](https://nilegazer00.github.io/NileGazer00-js-leadmachine/)**
 
 The simplest way to get started:
 

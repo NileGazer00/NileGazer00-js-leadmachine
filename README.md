@@ -1,182 +1,126 @@
-﻿# ⚡ LeadGen.js – 40 Lines of Vanilla JS That Prints Money
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NileGazer00</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; padding: 60px 0 40px; }
+        .avatar { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #58a6ff; margin-bottom: 20px; }
+        h1 { font-size: 2.5em; color: #f0f6fc; }
+        .tagline { font-size: 1.3em; color: #8b949e; margin-top: 10px; }
+        .roles { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 25px; }
+        .role { background: #161b22; border: 1px solid #30363d; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; color: #58a6ff; }
+        .section { margin: 50px 0; }
+        h2 { font-size: 1.6em; color: #f0f6fc; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #21262d; }
+        .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .project { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 25px; transition: border-color 0.3s; }
+        .project:hover { border-color: #58a6ff; }
+        .project h3 { color: #f0f6fc; margin-bottom: 8px; }
+        .project p { color: #8b949e; font-size: 0.95em; margin-bottom: 15px; }
+        .project a { color: #58a6ff; text-decoration: none; font-size: 0.9em; }
+        .project a:hover { text-decoration: underline; }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+        .tag { background: #1f2937; color: #8b949e; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; }
+        .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill { background: #161b22; border: 1px solid #30363d; padding: 10px 20px; border-radius: 8px; color: #c9d1d9; font-size: 0.95em; }
+        .stats { display: flex; justify-content: center; gap: 40px; margin: 30px 0; }
+        .stat { text-align: center; }
+        .stat-num { font-size: 2em; color: #58a6ff; font-weight: bold; }
+        .stat-label { color: #8b949e; font-size: 0.9em; }
+        .links { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .link { color: #8b949e; text-decoration: none; font-size: 1.1em; }
+        .link:hover { color: #58a6ff; }
+        .currently { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 25px; }
+        .currently h3 { color: #3fb950; margin-bottom: 10px; }
+        .currently p { color: #8b949e; }
+        @media (max-width: 600px) { .projects { grid-template-columns: 1fr; } .stats { gap: 20px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="avatar" src="https://avatars.githubusercontent.com/u/185620920?v=4" alt="NileGazer00">
+            <h1>NileGazer00</h1>
+            <p class="tagline">Full Stack Developer · Open Source Contributor</p>
+            <div class="roles">
+                <span class="role">JavaScript</span>
+                <span class="role">TypeScript</span>
+                <span class="role">React</span>
+                <span class="role">Node.js</span>
+                <span class="role">Python</span>
+                <span class="role">UI/UX Design</span>
+            </div>
+        </div>
 
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
-![Price](https://img.shields.io/badge/Price-Free%20%2B%20Pro-blue?style=for-the-badge)
-![GitHub Stars](https://img.shields.io/github/stars/NileGazer00/NileGazer00-js-leadmachine?style=for-the-badge)
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-num">🟢</div>
+                <div class="stat-label">Available for collabs</div>
+            </div>
+        </div>
 
-> **No backend. No database. No bullshit.**  
-> Copy, paste, and start capturing leads to Google Sheets in 3 minutes.
+        <div class="section">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Open Source</span>
+                        <span class="tag">MIT</span>
+                    </div>
+                    <h3>LeadGen.js</h3>
+                    <p>Zero-dependency JavaScript library for capturing leads directly to Google Sheets. No backend required.</p>
+                    <a href="https://github.com/NileGazer00/leadgen.js">View Repository →</a>
+                </div>
+                <div class="project">
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Documentation</span>
+                    </div>
+                    <h3>LeadGen.js Docs</h3>
+                    <p>Comprehensive documentation site with API reference, examples, and troubleshooting guides.</p>
+                    <a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine">View Repository →</a>
+                </div>
+            </div>
+        </div>
 
----
+        <div class="section">
+            <h2>Tech Stack</h2>
+            <div class="skills">
+                <span class="skill">JavaScript</span>
+                <span class="skill">TypeScript</span>
+                <span class="skill">React</span>
+                <span class="skill">Vue.js</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Express</span>
+                <span class="skill">Python</span>
+                <span class="skill">HTML5</span>
+                <span class="skill">CSS3</span>
+                <span class="skill">Tailwind CSS</span>
+                <span class="skill">MongoDB</span>
+                <span class="skill">PostgreSQL</span>
+                <span class="skill">Git</span>
+                <span class="skill">Figma</span>
+                <span class="skill">REST APIs</span>
+            </div>
+        </div>
 
-## 🌐 Live Demo & Free Download
+        <div class="section">
+            <div class="currently">
+                <h3>Currently working on</h3>
+                <p>Building open-source JavaScript tools and contributing to the developer community. Always exploring new technologies and improving existing workflows.</p>
+            </div>
+        </div>
 
-👉 **[https://NileGazer00.github.io/NileGazer00-js-leadmachine](https://NileGazer00.github.io/NileGazer00-js-leadmachine)** 👈
-
-**Try the live JavaScript console demo on the page – it actually works.**
-
----
-
-## 📦 What Is LeadGen.js?
-
-LeadGen.js is a **zero-dependency, vanilla JavaScript snippet** that adds a high-conversion lead capture form to any static HTML site. Submissions go directly to Google Sheets – no PHP, no Node, no database, no headache.
-
-### Perfect for:
-| Use Case | Why It Works |
-|----------|---------------|
-| Landing pages | Capture emails before they bounce |
-| Freelancer portfolios | Turn visitors into clients |
-| Small business sites | Replace contact forms that nobody fills |
-| SaaS waitlists | Build hype before launch |
-| Email list building | 40 lines vs. Mailchimp's 400 |
-
----
-
-## 🎁 Free Version (MIT License)
-
-**What you get:**
-- ✅ Vanilla JS snippet (copy/paste in 3 minutes)
-- ✅ Google Sheets integration (setup guide included)
-- ✅ Dark-themed form that converts
-- ✅ Mobile responsive out of the box
-- ✅ 40 lines of readable, hackable code
-- ✅ No tracking, no analytics, no hidden fees
-
-**Installation (60 seconds):**
-\\\html
-<!-- Add this anywhere in your HTML -->
-<script src="https://your-server.com/leadgen.js"></script>
-<div id="leadgen-form"></div>
-\\\
-
-**That's it. No build step. No package.json. No drama.**
-
----
-
-## 💎 Pro Version –  One-Time
-
-| Feature | Free | Pro |
-|---------|------|-----|
-| Lead capture form | ✅ | ✅ |
-| Google Sheets integration | ✅ | ✅ |
-| **A/B testing headlines** | ❌ | ✅ |
-| **Exit-intent popup** | ❌ | ✅ |
-| **Analytics dashboard** | ❌ | ✅ |
-| **Email validation (real-time)** | ❌ | ✅ |
-| **Custom CSS themes** | ❌ | ✅ |
-| **Priority email support (< 1 hour)** | ❌ | ✅ |
-| **Lifetime updates** | ❌ | ✅ |
-
-👉 **[Upgrade to Pro – ](https://paypal.me/NileGazer00)**  
-*Send payment via PayPal, email receipt to jusspound@gmail.com, get Pro files within 1 hour.*
-
----
-
-## 🤖 Custom JS Automation – From ,999
-
-I'm a full‑stack JavaScript developer (React, Node.js, Python) available for hire. **I build tools that save you 20+ hours/week.**
-
-### What I've built for clients:
-| Project | Tech Stack | Price |
-|---------|------------|-------|
-| Twitter scraping bot | Node.js + Puppeteer | ,500 |
-| Real estate dashboard | React + Airtable API | ,200 |
-| Stripe analytics tool | Node.js + Chart.js | ,900 |
-| Inventory automation | Python + Google Sheets | ,100 |
-
-### My rates:
-- **Hourly:** –150
-- **Fixed project:** From ,999
-- **Retainer:** /month (5 hours priority support)
-
-👉 **[Request a Quote](mailto:jusspound@gmail.com)** – tell me your pain point, I'll reply within 4 hours.  
-👉 **Deposit ( min):** [PayPal.me/NileGazer00](https://paypal.me/NileGazer00)
-
----
-
-## 📊 Why Choose LeadGen.js Over Alternatives?
-
-| Solution | Cost | Backend Required | Setup Time | Open Source |
-|----------|------|------------------|------------|-------------|
-| **LeadGen.js** | –197 | ❌ No | 3 min | ✅ MIT |
-| Typeform | /mo | ❌ No | 10 min | ❌ |
-| HubSpot | /mo | ❌ No | 30 min | ❌ |
-| Custom API | ,000+ | ✅ Yes | 2 weeks | ❌ |
-
-**LeadGen.js is the only free, open-source, zero-backend solution that takes 3 minutes to deploy.**
-
----
-
-## 🧪 Live Demo – Run This In Your Browser Console
-
-Open the [live site](https://NileGazer00.github.io/NileGazer00-js-leadmachine), press F12, and run:
-
-\\\javascript
-// Calculate how many leads you need to hit /month
-calculateLeadsNeeded(21000, 499); // Returns 42 leads/month
-\\\
-
-**Yes, that function actually exists on the page. No fake buttons.**
-
----
-
-## 📈 Traffic Math – How This Makes /Month
-
-| Source | Monthly Visitors | Conversion | Revenue |
-|--------|------------------|------------|---------|
-| Reddit (4 posts) | 8,000 | 0.5% hire ( avg) = ,000 |
-| Hacker News | 3,000 | 2% Pro () = ,820 |
-| Organic GitHub | 2,000 | 1% Pro + 0.3% hire = ,940 |
-| **Total** | **13,000** | | **,760** |
-
-**You hit /month with just 2 freelance hires + 50 Pro sales.**
-
----
-
-## 📞 Contact & Payments
-
-| Purpose | Link/Action |
-|---------|--------------|
-| **Free download** | [Live demo site](https://NileGazer00.github.io/NileGazer00-js-leadmachine) |
-| **Pro upgrade ()** | [PayPal.me/NileGazer00](https://paypal.me/NileGazer00) + email receipt |
-| **Freelance quote** | [jusspound@gmail.com](mailto:jusspound@gmail.com) |
-| **Project deposit ( min)** | [PayPal.me/NileGazer00](https://paypal.me/NileGazer00) |
-| **WhatsApp/Telegram** | +4915214108652 |
-| **GitHub Issues** | [Open an issue](https://github.com/NileGazer00/NileGazer00-js-leadmachine/issues) |
-
----
-
-## 🧠 Why I Built This
-
-I'm a freelance full-stack developer. Every client asked for the same thing: *"Can you add a lead form that emails me?"*
-
-I got tired of rebuilding it. So I open-sourced it.
-
-**Now you can use it for free. Upgrade to Pro if you need advanced features. Hire me if you need custom automation.**
-
----
-
-## 📄 License
-
-MIT – use it for anything, including commercial projects.  
-Attribution appreciated but not required.
-
----
-
-## ⭐ Star This Repo
-
-If LeadGen.js saves you time or makes you money:  
-→ **Star this repo**  
-→ **Tell a friend**  
-→ **Send a  Pro upgrade to my PayPal** 😉
-
----
-
-**Built with ☕ and vanilla JS by [NileGazer00](https://github.com/NileGazer00)**  
-
-*"I built this because I was tired of rebuilding lead capture for every client. Now it's yours for free. Go make money."*
-
----
-
-[![Built with Love](https://img.shields.io/badge/built%20with-❤️-red?style=for-the-badge)](https://github.com/NileGazer00)
+        <div class="links">
+            <a class="link" href="https://github.com/NileGazer00">GitHub</a>
+            <a class="link" href="https://paypal.me/LeadGenLabs">Support</a>
+        </div>
+    </div>
+</body>
+</html>

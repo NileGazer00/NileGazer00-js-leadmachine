@@ -3,324 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="LeadGen.js - Free open-source JavaScript lead generation tool. 40 lines of code. No backend. Direct to Google Sheets.">
-  <meta name="author" content="NileGazer00">
-  <meta property="og:title" content="LeadGen.js - Open Source Lead Generation">
-  <meta property="og:description" content="40 lines of vanilla JS that capture leads to Google Sheets">
-  <meta property="og:image" content="https://NileGazer00.github.io/NileGazer00-js-leadmachine/og-image.png">
-  <title>LeadGen.js | Open Source JavaScript Lead Generation</title>
+  <meta name="description" content="LeadGen.js - Free open-source JavaScript library for lead capture to Google Sheets">
+  <title>LeadGen.js | Open Source JS Lead Capture Library</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #0a0c10 0%, #0f1117 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0c10;
       color: #e4e6eb;
       line-height: 1.6;
     }
-
-    .container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
-    
-    /* Glass morphism header */
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: rgba(20, 24, 36, 0.6);
-      backdrop-filter: blur(10px);
-      border-radius: 2rem;
-      margin-bottom: 3rem;
-      border: 1px solid rgba(0, 255, 157, 0.2);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-    
-    h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #00ff9d 0%, #00a3ff 50%, #7b2cbf 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(0, 255, 157, 0.15);
-      border: 1px solid rgba(0, 255, 157, 0.3);
-      padding: 0.4rem 1rem;
-      border-radius: 100px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #00ff9d;
-      margin-bottom: 1.5rem;
-    }
-    
-    .subtitle {
-      font-size: 1.25rem;
-      color: #8a8fa3;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .btn-group {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-    }
-    
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2rem;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, #00ff9d, #00cc7d);
-      color: #000;
-      box-shadow: 0 4px 15px rgba(0, 255, 157, 0.3);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 255, 157, 0.4);
-    }
-    
-    .btn-secondary {
-      background: rgba(44, 62, 102, 0.8);
-      border: 1px solid rgba(0, 255, 157, 0.3);
-      color: #fff;
-    }
-    
-    .btn-secondary:hover {
-      background: rgba(44, 62, 102, 1);
-      border-color: #00ff9d;
-      transform: translateY(-2px);
-    }
-    
-    /* Card grid */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .card {
-      background: rgba(20, 24, 36, 0.8);
-      backdrop-filter: blur(5px);
-      border-radius: 1.5rem;
-      padding: 1.8rem;
-      border: 1px solid rgba(42, 47, 63, 0.6);
-      transition: all 0.3s ease;
-    }
-    
-    .card:hover {
-      border-color: rgba(0, 255, 157, 0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-    }
-    
-    .card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #00ff9d;
-    }
-    
-    .code-block {
-      background: #0a0c10;
-      padding: 1.2rem;
-      border-radius: 1rem;
-      font-family: 'Fira Code', 'Courier New', monospace;
-      font-size: 0.85rem;
-      overflow-x: auto;
-      border: 1px solid #2a2f3f;
-      margin: 1rem 0;
-    }
-    
-    .code-block code {
-      color: #00ff9d;
-    }
-    
-    .feature-list {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .feature-list li {
-      padding: 0.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    
-    .feature-list li::before {
-      content: "✅";
-      color: #00ff9d;
-    }
-    
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-      padding: 2rem;
-      background: rgba(0, 255, 157, 0.05);
-      border-radius: 1.5rem;
-      text-align: center;
-    }
-    
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #00ff9d;
-    }
-    
-    .stat-label {
-      font-size: 0.85rem;
-      color: #8a8fa3;
-    }
-    
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 2rem;
-      border-top: 1px solid #2a2f3f;
-      font-size: 0.85rem;
-      color: #6c7293;
-    }
-    
-    @media (max-width: 768px) {
-      .container { padding: 1rem; }
-      h1 { font-size: 2.5rem; }
-      .hero { padding: 2rem 1rem; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .stats { gap: 1.5rem; }
-    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+    header { text-align: center; padding: 3rem 0; border-bottom: 1px solid #2a2f3f; }
+    h1 { font-size: 3rem; color: #00ff9d; margin-bottom: 0.5rem; }
+    .badge { display: inline-block; background: #f7df1e; color: #000; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+    .install { background: #141824; border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border: 1px solid #2a2f3f; }
+    code { background: #0a0c10; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
+    pre { background: #0a0c10; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .card { background: #141824; border-radius: 12px; padding: 1.5rem; border: 1px solid #2a2f3f; }
+    .card h3 { color: #00ff9d; margin-bottom: 1rem; }
+    footer { text-align: center; margin-top: 3rem; padding: 2rem; border-top: 1px solid #2a2f3f; font-size: 0.8rem; color: #6c7293; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 2rem; } }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Hero Section -->
-    <div class="hero">
-      <div class="badge">
-        <span>⚡</span> OPEN SOURCE · MIT LICENSE
-      </div>
+    <header>
+      <span class="badge">⚡ OPEN SOURCE · MIT LICENSE</span>
       <h1>LeadGen.js</h1>
-      <p class="subtitle">40 lines of vanilla JavaScript that capture leads directly to Google Sheets.<br>No backend. No database. No cost.</p>
-      <div class="btn-group">
-        <a href="#installation" class="btn btn-primary">📖 Get Started</a>
-        <a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine" class="btn btn-secondary">⭐ GitHub</a>
-      </div>
-    </div>
+      <p>A lightweight, zero-dependency JavaScript library that captures leads directly to Google Sheets</p>
+      <p style="margin-top: 1rem;">
+        <a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine" style="color: #00ff9d;">⭐ GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="#install" style="color: #00ff9d;">📖 Documentation</a>
+      </p>
+    </header>
 
-    <!-- Stats -->
-    <div class="stats">
-      <div>
-        <div class="stat-number">40</div>
-        <div class="stat-label">Lines of Code</div>
-      </div>
-      <div>
-        <div class="stat-number">3 min</div>
-        <div class="stat-label">Setup Time</div>
-      </div>
-      <div>
-        <div class="stat-number">∞</div>
-        <div class="stat-label">Free Forever</div>
-      </div>
-    </div>
+    <section id="install" class="install">
+      <h2>📦 Installation</h2>
+      <p>Add these two lines to any HTML file:</p>
+      <pre><code>&lt;script src="https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js"&gt;&lt;/script&gt;
+&lt;div id="leadgen-form"&gt;&lt;/div&gt;</code></pre>
+      <p>That's it. No build steps, no dependencies.</p>
+    </section>
 
-    <!-- Features Grid -->
-    <div class="grid-2">
+    <div class="grid">
       <div class="card">
-        <h3>📜 Installation</h3>
-        <div class="code-block">
-          <code>&lt;script src="https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js"&gt;&lt;/script&gt;<br>
-          &lt;div id="leadgen-form"&gt;&lt;/div&gt;</code>
-        </div>
-        <p>Copy these two lines into any HTML file. That's it.</p>
+        <h3>⚙️ Basic Usage</h3>
+        <pre><code>// Initialize
+LeadGen.init({
+  sheetId: "YOUR_SHEET_ID",
+  theme: "dark"
+});</code></pre>
       </div>
-
       <div class="card">
-        <h3>⚙️ Usage</h3>
-        <div class="code-block">
-          <code>// Initialize the form<br>
-          LeadGen.init({<br>
-          &nbsp;&nbsp;sheetId: "YOUR_GOOGLE_SHEETS_ID",<br>
-          &nbsp;&nbsp;theme: "dark"<br>
-          });<br><br>
-          // Calculate leads needed<br>
-          LeadGen.calculateLeadsNeeded(21000, 499); // 42 leads</code>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>📤 Google Sheets Setup</h3>
-        <ul class="feature-list">
-          <li>Create a Google Sheet</li>
-          <li>Get your Sheet ID from the URL</li>
-          <li>Enable Google Sheets API</li>
-          <li>Create an API key</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>✨ Features</h3>
-        <ul class="feature-list">
-          <li>Zero dependencies</li>
-          <li>Dark/Light themes</li>
-          <li>Mobile responsive</li>
-          <li>MIT Licensed</li>
-        </ul>
+        <h3>📊 Calculate Leads</h3>
+        <pre><code>// How many leads to hit $21k/month?
+LeadGen.calculateNeeded(21000, 499);
+// Returns: 42 leads</code></pre>
       </div>
     </div>
 
-    <!-- Live Demo Section -->
-    <div class="card" style="text-align: center;">
-      <h3>🧪 Live Demo</h3>
-      <p>Open your browser console (F12) and try:</p>
-      <div class="code-block">
-        <code>calculateLeadsNeeded(21000, 499); // Returns 42 leads needed per month</code>
-      </div>
-      <button onclick="alert('Result: ' + calculateLeadsNeeded(21000, 499) + ' leads needed')" class="btn btn-primary" style="margin-top: 1rem;">▶ Run Demo</button>
+    <div class="card">
+      <h3>📤 Google Sheets Setup</h3>
+      <ol style="margin-left: 1.5rem;">
+        <li>Create a Google Sheet</li>
+        <li>Copy the Sheet ID from the URL</li>
+        <li>Enable Google Sheets API in Google Cloud Console</li>
+        <li>Create an API key and restrict it to Sheets API</li>
+      </ol>
     </div>
 
-    <!-- Pro Version (subtle, not prominent) -->
-    <div class="card" style="background: rgba(0, 255, 157, 0.05); text-align: center;">
-      <h3 style="color: #fff;">💎 Pro Version</h3>
-      <p style="color: #8a8fa3;">A/B testing · Exit-intent popup · Analytics dashboard · Email validation</p>
-      <p><strong>$197 one-time</strong> — includes lifetime updates</p>
-      <a href="https://paypal.me/LeadGenLabs" class="btn btn-secondary" style="margin-top: 0.5rem;">Upgrade to Pro</a>
-      <p style="font-size: 0.75rem; margin-top: 0.5rem;">After payment, email receipt to <a href="mailto:jusspound@gmail.com" style="color: #00ff9d;">jusspound@gmail.com</a></p>
+    <div class="card">
+      <h3>🧪 Try It Now</h3>
+      <p>Open your browser console (F12) and run:</p>
+      <pre><code>calculateLeadsNeeded(21000, 499); // Returns 42 leads needed per month</code></pre>
+      <button onclick="alert('Result: ' + calculateLeadsNeeded(21000, 499))" style="background: #00ff9d; color: #000; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;">▶ Run Demo</button>
     </div>
 
-    <!-- Footer -->
+    <div class="card">
+      <h3>📝 API Reference</h3>
+      <pre><code>LeadGen.init(config)     // Initialize the form
+LeadGen.calculateNeeded(targetRevenue, avgSale)  // Calculate leads needed
+LeadGen.setTheme(theme)  // Change theme (dark/light)
+LeadGen.getAnalytics()   // Get submission stats</code></pre>
+    </div>
+
     <footer>
       <p>© 2026 LeadGen.js – MIT License</p>
       <p>Built with vanilla JavaScript for the open-source community</p>
-      <p>📧 <a href="mailto:jusspound@gmail.com" style="color: #00ff9d;">jusspound@gmail.com</a> | 💬 <a href="https://wa.me/4915214108652" style="color: #00ff9d;">+4915214108652</a> | 💸 <a href="https://paypal.me/LeadGenLabs" style="color: #00ff9d;">PayPal</a></p>
+      <p><a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine" style="color: #6c7293;">GitHub Repository</a></p>
     </footer>
   </div>
 
   <script>
-    // Demo function for the console
-    window.calculateLeadsNeeded = function(targetRevenue, avgSale) {
-      return Math.ceil(targetRevenue / avgSale);
+    window.calculateLeadsNeeded = function(target, avg) {
+      return Math.ceil(target / avg);
     };
-    
-    console.log("%c✨ LeadGen.js loaded successfully!", "color: #00ff9d; font-size: 16px;");
-    console.log("%cTry: calculateLeadsNeeded(21000, 499)", "color: #8a8fa3;");
+    console.log("LeadGen.js documentation loaded");
   </script>
 </body>
 </html>

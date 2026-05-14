@@ -1,130 +1,78 @@
-<!DOCTYPE html>
+Ôªø<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free JavaScript lead generation tool + professional JS development services">
-  <title>JS-LeadMachine | Free Lead Gen JS Tool + Dev Services</title>
+  <meta name="description" content="Free JavaScript lead generation tool - LeadGen.js">
+  <title>LeadGen.js | Free JavaScript Lead Generation Tool</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Inter, system-ui, sans-serif; background: #0a0c10; color: #e4e6eb; line-height: 1.5; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
-    .hero { text-align: center; padding: 3rem 1rem; background: linear-gradient(135deg, #0a0c10 0%, #1a1f2e 100%); border-radius: 2rem; margin-bottom: 2rem; }
-    h1 { font-size: 2.8rem; background: linear-gradient(135deg, #00ff9d, #00a3ff); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
-    .js-badge { display: inline-block; background: #f7df1e; color: #000; padding: 0.3rem 0.8rem; border-radius: 50px; font-weight: bold; font-size: 0.8rem; margin-bottom: 1rem; }
-    .btn { display: inline-block; background: #00ff9d; color: #000; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 1rem 0.5rem; transition: transform 0.2s; border: none; cursor: pointer; }
-    .btn:hover { transform: scale(1.05); }
-    .btn-secondary { background: #2c3e66; color: white; }
-    .btn-paypal { background: #0070ba; color: white; }
-    .btn-stripe { background: #635bff; color: white; }
-    .card { background: #141824; border-radius: 1.5rem; padding: 1.8rem; margin: 1.5rem 0; border: 1px solid #2a2f3f; }
-    .card-highlight { background: #0a1a2a; border: 2px solid #00ff9d; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .payment-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1rem 0; }
-    footer { text-align: center; margin-top: 3rem; padding: 2rem; border-top: 1px solid #2a2f3f; font-size: 0.8rem; color: #6c7293; }
-    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 2rem; } }
-    .live-console { background: #000; padding: 1rem; border-radius: 1rem; font-family: monospace; margin: 1rem 0; }
-    .price-tag { font-size: 1.5rem; font-weight: bold; color: #00ff9d; margin: 0.5rem 0; }
-    .small-note { font-size: 0.8rem; color: #8a8fa3; margin-top: 0.5rem; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0c10; color: #e4e6eb; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .header { text-align: center; padding: 3rem 1rem; }
+    h1 { font-size: 2.5rem; background: linear-gradient(135deg, #00ff9d, #00a3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .badge { display: inline-block; background: #f7df1e; color: #000; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.8rem; margin-bottom: 1rem; }
+    .btn { display: inline-block; background: #00ff9d; color: #000; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 0.5rem; }
+    .card { background: #141824; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; border: 1px solid #2a2f3f; }
+    .code-block { background: #000; padding: 1rem; border-radius: 0.5rem; font-family: monospace; overflow-x: auto; }
+    footer { text-align: center; margin-top: 3rem; padding: 2rem; border-top: 1px solid #2a2f3f; font-size: 0.8rem; }
+    .docs-nav { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0; }
+    .docs-nav a { color: #00ff9d; text-decoration: none; }
+    @media (max-width: 768px) { .container { padding: 1rem; } }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="hero">
-      <span class="js-badge">? PURE JAVASCRIPT</span>
-      <h1>JS-LeadMachine<br>Free Lead Gen Tool + Dev Services</h1>
-      <p>40 lines of vanilla JS that capture leads ? Google Sheets. No backend. No cost.</p>
-      <div class="payment-buttons">
-        <a href="#free-download" class="btn">?? DOWNLOAD LeadGen.js FREE</a>
-        <a href="#hire" class="btn btn-secondary">?? HIRE JS EXPERT ($100-150/hr)</a>
-      </div>
-      <div class="payment-buttons">
-        <a href="https://paypal.me/LeadGenLabs" class="btn btn-paypal">?? PayPal Me ñ Instant Payment</a>
-      </div>
-      <p class="small-note">? Trusted by 340+ developers ï Open source ï MIT license</p>
-    </div>
-
-    <div class="card" id="free-download">
-      <h2>?? LeadGen.js ñ Open Source JavaScript Snippet</h2>
-      <p>Copy, paste, and start collecting emails in 3 minutes. Works on any static HTML site.</p>
-      <div class="live-console">
-        <code>// Live demo ñ try it yourself<br>
-        function calculateLeadsNeeded(targetRevenue, avgSale) {<br>
-        &nbsp;&nbsp;return Math.ceil(targetRevenue / avgSale);<br>
-        }<br>
-        <strong>> calculateLeadsNeeded(21000, 499)</strong><br>
-        ? <span id="demoResult">42</span> leads needed per month<br>
-        <button onclick="document.getElementById('demoResult').innerText = calculateLeadsNeeded(21000, 499)">? Run JS</button>
-        </code>
-      </div>
-      <p style="margin-top:1rem; font-size:0.8rem;">GitHub repo: <a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine" style="color:#00ff9d;">github.com/NileGazer00/NileGazer00-js-leadmachine</a></p>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <h3>?? Custom JS Automation</h3>
-        <p>Web scrapers, API integrations, dashboard widgets, automation scripts.</p>
-        <div class="price-tag">From $2,999/project</div>
-        <a href="#hire" class="btn" style="padding:0.5rem 1rem; font-size:0.9rem;">Request Quote</a>
-      </div>
-      <div class="card">
-        <h3>? LeadGen.js Pro</h3>
-        <p>A/B testing, exit-intent popups, analytics dashboard, email validation.</p>
-        <div class="price-tag">$197 one-time</div>
-        <a href="#pro-payment" class="btn" style="padding:0.5rem 1rem; font-size:0.9rem; background:#00a3ff;">Upgrade to Pro</a>
+    <div class="header">
+      <span class="badge">‚ö° OPEN SOURCE</span>
+      <h1>LeadGen.js</h1>
+      <p>40 lines of vanilla JS that capture leads ‚Üí Google Sheets. No backend. No cost.</p>
+      <div>
+        <a href="#installation" class="btn">üìñ Documentation</a>
+        <a href="https://github.com/NileGazer00/NileGazer00-js-leadmachine" class="btn" style="background:#2c3e66;">‚≠ê GitHub</a>
       </div>
     </div>
 
-    <div class="card card-highlight" id="pro-payment">
-      <h3>?? GET LEADGEN.JS PRO ñ INSTANT ACCESS</h3>
-      <p>Choose your payment method. You'll receive the Pro files within 1 hour of payment.</p>
-      <div class="payment-buttons">
-        <a href="https://paypal.me/LeadGenLabs" class="btn btn-paypal" style="padding: 0.8rem 2rem;">?? paypal.me/LeadGenLabs</a>
-        <a href="#" class="btn btn-stripe" id="stripe-placeholder" style="padding: 0.8rem 2rem;">?? Stripe (Credit Card)</a>
+    <div class="card">
+      <h2>üìú Installation</h2>
+      <div class="code-block">
+        <code>&lt;script src="https://cdn.jsdelivr.net/gh/NileGazer00/leadgen.js/leadgen.js"&gt;&lt;/script&gt;<br>
+        &lt;div id="leadgen-form"&gt;&lt;/div&gt;</code>
       </div>
-      <p class="small-note"><strong>After sending payment:</strong> Email <a href="mailto:jusspound@gmail.com" style="color:#00ff9d;">jusspound@gmail.com</a> with your receipt and PayPal email. You'll get LeadGen.js Pro (full source code + documentation) within 1 hour.</p>
-      <p class="small-note">?? For custom JS automation ($2,999+ projects): Send $500 deposit via PayPal, then email your requirements.</p>
     </div>
 
-    <div class="card" id="hire">
-      <h3>?? Why hire me (NileGazer00)?</h3>
-      <ul style="margin-left: 1.5rem;">
-        <li>? Full-stack JS (React, Node.js, Python)</li>
-        <li>? 3-14 day delivery ñ API integrations, custom dashboards</li>
-        <li>? $100-150/hour or fixed-price projects</li>
-        <li>? 100+ freelance projects (portfolio available)</li>
-      </ul>
-      <p>?? <strong>jusspound@gmail.com</strong> | ?? +4915214108652 (WhatsApp/Telegram)</p>
-      <div class="payment-buttons">
-        <a href="mailto:jusspound@gmail.com" class="btn">?? Email me directly</a>
-        <a href="https://paypal.me/LeadGenLabs" class="btn btn-paypal">?? Send deposit ($150 min)</a>
+    <div class="card">
+      <h2>‚öôÔ∏è Usage</h2>
+      <div class="code-block">
+        <code>// Initialize the form<br>
+        LeadGen.init({<br>
+        &nbsp;&nbsp;sheetId: "YOUR_GOOGLE_SHEETS_ID",<br>
+        &nbsp;&nbsp;theme: "dark"<br>
+        });<br><br>
+        // Calculate leads needed for revenue goal<br>
+        LeadGen.calculateLeadsNeeded(21000, 499); // 42 leads</code>
       </div>
-      <p class="small-note">?? Consultation fee ($150) applies to first hour, deductible from project total.</p>
+    </div>
+
+    <div class="card">
+      <h2>üì§ Google Sheets Setup</h2>
+      <ol style="margin-left: 1.5rem;">
+        <li>Create a Google Sheet</li>
+        <li>Get your Sheet ID from the URL</li>
+        <li>Enable Google Sheets API</li>
+        <li>Create an API key</li>
+      </ol>
     </div>
 
     <footer>
-      <p>© 2026 JS-LeadMachine ñ Pure JavaScript lead generation tool. Open source under MIT.</p>
-      <p>?? PayPal: <a href="https://paypal.me/LeadGenLabs" style="color:#00ff9d;">paypal.me/LeadGenLabs</a> | ?? Email: jusspound@gmail.com</p>
-      <p>This site provides actual JavaScript code and development services ñ fully compliant with js.org guidelines.</p>
+      <p>¬© 2026 LeadGen.js ‚Äì MIT License</p>
+      <p>Built with vanilla JavaScript for the open-source community</p>
     </footer>
   </div>
 
   <script>
-    // Clear any existing redirects
-    if (window.location.href.includes('js.org') && !window.location.href.includes('github.io')) {
-      // Do NOT redirect - just stay put
-      console.log("Custom domain active - no redirect");
-    }
-    
-    // Define the function GLOBALLY so the button works
-    window.calculateLeadsNeeded = function(targetRevenue, avgSale) {
-      return Math.ceil(targetRevenue / avgSale);
-    };
-    
-    // Set initial value
-    document.getElementById('demoResult').innerText = window.calculateLeadsNeeded(21000, 499);
-    
-    console.log("JS-LeadMachine fully loaded - PayPal ready, no redirects");
+    console.log("LeadGen.js documentation loaded");
+    window.calculateLeadsNeeded = function(target, avg) { return Math.ceil(target / avg); };
   </script>
 </body>
 </html>

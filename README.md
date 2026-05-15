@@ -2,7 +2,7 @@
 
 # 📖 LeadGen.js Documentation
 
-**The official documentation site for [LeadGen.js](https://nilegazer00.github.io/)**
+**The official documentation site for [LeadGen.js](https://nilegazer00.github.io/NileGazer00-js-leadmachine/)**
 
 A lightweight, zero-dependency JavaScript library for capturing leads directly to Google Sheets — no backend required.
 
@@ -20,7 +20,7 @@ A lightweight, zero-dependency JavaScript library for capturing leads directly t
 The documentation is live at:
 
 - **[js-leadmachine.js.org](https://js-leadmachine.js.org)** — custom domain via JS.ORG
-- **[nilegazer00.github.io/NileGazer00-js-leadmachine](https://nilegazer00.github.io/)** — GitHub Pages fallback
+- **[nilegazer00.github.io/NileGazer00-js-leadmachine](https://nilegazer00.github.io/NileGazer00-js-leadmachine/)** — GitHub Pages fallback
 
 ---
 
@@ -50,7 +50,7 @@ The documentation is built as a **single-page static site** (`index.html`) with 
 
 If you're looking to **use LeadGen.js** in your project, head straight to the live docs:
 
-👉 **[js-leadmachine.js.org](https://nilegazer00.github.io/)**
+👉 **[js-leadmachine.js.org](https://nilegazer00.github.io/NileGazer00-js-leadmachine/)**
 
 The simplest way to get started:
 
